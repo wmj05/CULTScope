@@ -1,0 +1,13 @@
+seed_id,title,original_title,year,tmdb_id,imdb_id,candidate_source_ids,cult_criteria_codes,review_status,confidence,reviewer,reviewed_at,notes
+CS-0001,橡皮头,Eraserhead,1977,985,tt0074486,S-007|S-008|S-010,C1|C2|C5|C7|C8,pending,,,,3.2A 试点：证据已收集并核对正文，待人工审核；未填写 reviewer/reviewed_at
+CS-0002,粉红色的火烈鸟,Pink Flamingos,1972,692,tt0069089,S-009|S-011,C1|C3|C4|C5|C7,pending,,,,3.2A 试点：证据已收集并核对正文，待人工审核；C4/C7 仅有 T3 媒体来源，需补 T1/T2
+CS-0003,洛基恐怖秀,The Rocky Horror Picture Show,1975,36685,tt0073629,S-005|S-006,C1|C2|C3|C6,approved,,wmj,2026-11-17T11:22:02.338888+08:00,3.2A 试点：证据已收集并核对正文，待人工审核；未填写 reviewer/reviewed_at
+CS-0004,德州电锯杀人狂,The Texas Chain Saw Massacre,1974,30497,tt0072271,,,draft,,,,由阶段二种子迁移；尚未完成 Cult 认定审核
+CS-0005,活死人黎明,Dawn of the Dead,1978,923,tt0077402,,,draft,,,,由阶段二种子迁移；尚未完成 Cult 认定审核
+CS-0006,录影带谋杀案,Videodrome,1983,837,tt0086541,,,draft,,,,由阶段二种子迁移；尚未完成 Cult 认定审核
+CS-0007,活跳尸,Re-Animator,1985,1694,tt0089885,,,draft,,,,由阶段二种子迁移；尚未完成 Cult 认定审核
+CS-0008,蓝丝绒,Blue Velvet,1986,793,tt0090756,,,draft,,,,由阶段二种子迁移；尚未完成 Cult 认定审核
+CS-0009,鬼玩人2,Evil Dead II,1987,765,tt0092991,,,draft,,,,由阶段二种子迁移；尚未完成 Cult 认定审核
+CS-0010,搏击俱乐部,Fight Club,1999,550,tt0137523,,,draft,,,,由阶段二种子迁移；尚未完成 Cult 认定审核
+CS-0011,死亡幻觉,Donnie Darko,2001,141,tt0246578,,,draft,,,,由阶段二种子迁移；尚未完成 Cult 认定审核
+CS-0012,灯塔,The Lighthouse,2019,503919,tt7984734,,,draft,,,,由阶段二种子迁移；尚未完成 Cult 认定审核

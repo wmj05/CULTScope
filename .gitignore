@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# 环境变量（.env 含密钥，禁止提交）
+.env
+.env.*
+!.env.example
+
+# 前端
+frontend/node_modules/
+frontend/dist/
+
+# 编辑器与系统
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# 日志与临时文件
+*.log
+# Temporary development files
+*.tmp
+.screenshots/
+backend/data/.review_txn/
+# Knowledge review runtime lock
+backend/data/knowledge/.review.lock

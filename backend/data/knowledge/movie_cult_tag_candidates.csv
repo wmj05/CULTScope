@@ -1,0 +1,14 @@
+seed_id,tag_id,evidence,source_ids,proposed_by,proposed_at,human_status,confirmed_by,confirmed_at
+CS-0001,aesthetic_surrealism,S-008 讨论林奇与超现实主义的关系，称影片是“a dream of dark and troubling things”。,S-008,AI-draft (CULTScope),2026-11-17T10:18:28+08:00,confirmed,wmj,2026-11-17T11:41:19.235621+08:00
+CS-0001,aesthetic_low_fi,S-007 记载影片耗时五年，以零散资金、六人剧组和 AFI 旧马厩完成。,S-007,AI-draft (CULTScope),2026-11-17T10:18:28+08:00,pending,,
+CS-0001,aesthetic_experimental_narrative,S-008 指出影片以 jagged editing 与 nerve-jangling sound design 取代常规叙事。,S-008,AI-draft (CULTScope),2026-11-17T10:18:28+08:00,confirmed,wmj,2026-11-17T11:41:19.235621+08:00
+CS-0001,theme_identity_anxiety,S-007 提到林奇把自身对父职的恐惧写入影片。,S-007,AI-draft (CULTScope),2026-11-17T10:18:28+08:00,pending,,
+CS-0001,influence_subcultural_symbol,S-007 记载影片形象（发型、T 恤、海报）持续流通。,S-007,AI-draft (CULTScope),2026-11-17T10:18:28+08:00,pending,,
+CS-0002,production_independent,S-009 描述 Dreamland 家庭作坊式的 shoestring operation 与极低预算制作。,S-009,AI-draft (CULTScope),2026-11-17T10:18:28+08:00,confirmed,wmj,2026-11-17T11:47:24.692987+08:00
+CS-0002,production_censorship_controversy,S-011 记录影片在多地遭遇审查与真实法庭诉讼。,S-011,AI-draft (CULTScope),2026-11-17T10:18:28+08:00,pending,,
+CS-0002,reception_midnight_movie,S-009 记载影片在午夜场长期放映。,S-009,AI-draft (CULTScope),2026-11-17T10:18:28+08:00,confirmed,wmj,2026-11-17T11:47:24.692987+08:00
+CS-0002,theme_sexual_transgression,S-009 讨论影片对性禁忌与越界行为的展示。,S-009,AI-draft (CULTScope),2026-11-17T10:18:28+08:00,pending,,
+CS-0003,reception_midnight_movie,S-005 称其为 the ultimate midnight movie；S-006 记录 1976 年纽约午夜场重开。,S-005|S-006,AI-draft (CULTScope),2026-11-17T10:18:28+08:00,confirmed,wmj,2026-11-17T11:22:02.338888+08:00
+CS-0003,reception_fan_ritual,S-006 记录喊台词、抛米、水枪、雨伞与片前 Time Warp 等现场仪式。,S-006,AI-draft (CULTScope),2026-11-17T10:18:28+08:00,confirmed,wmj,2026-11-17T11:22:02.338888+08:00
+CS-0003,reception_cult_revival,S-006 记载影片首轮商业失败后借午夜场重新获得观众。,S-006,AI-draft (CULTScope),2026-11-17T10:18:28+08:00,confirmed,wmj,2026-11-17T11:22:02.338888+08:00
+CS-0003,theme_sexual_transgression,S-006 讨论影片中的 transvestism 与 transsexuality 等性别越界表达。,S-006,AI-draft (CULTScope),2026-11-17T10:18:28+08:00,confirmed,wmj,2026-11-17T11:22:02.338888+08:00

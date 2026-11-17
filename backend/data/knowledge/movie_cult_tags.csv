@@ -1,0 +1,9 @@
+seed_id,tag_id,origin,confidence,evidence,source_ids,rule_id,annotator,reviewed,updated_at
+CS-0003,reception_midnight_movie,manual,,S-005 称其为 the ultimate midnight movie；S-006 记录 1976 年纽约午夜场重开。,S-005|S-006,,wmj,true,2026-11-17T11:22:02.338888+08:00
+CS-0003,reception_fan_ritual,manual,,S-006 记录喊台词、抛米、水枪、雨伞与片前 Time Warp 等现场仪式。,S-006,,wmj,true,2026-11-17T11:22:02.338888+08:00
+CS-0003,reception_cult_revival,manual,,S-006 记载影片首轮商业失败后借午夜场重新获得观众。,S-006,,wmj,true,2026-11-17T11:22:02.338888+08:00
+CS-0003,theme_sexual_transgression,manual,,S-006 讨论影片中的 transvestism 与 transsexuality 等性别越界表达。,S-006,,wmj,true,2026-11-17T11:22:02.338888+08:00
+CS-0001,aesthetic_surrealism,manual,,S-008 讨论林奇与超现实主义的关系，称影片是“a dream of dark and troubling things”。,S-008,,wmj,true,2026-11-17T11:41:19.235621+08:00
+CS-0001,aesthetic_experimental_narrative,manual,,S-008 指出影片以 jagged editing 与 nerve-jangling sound design 取代常规叙事。,S-008,,wmj,true,2026-11-17T11:41:19.235621+08:00
+CS-0002,production_independent,manual,,S-009 描述 Dreamland 家庭作坊式的 shoestring operation 与极低预算制作。,S-009,,wmj,true,2026-11-17T11:47:24.692987+08:00
+CS-0002,reception_midnight_movie,manual,,S-009 记载影片在午夜场长期放映。,S-009,,wmj,true,2026-11-17T11:47:24.692987+08:00

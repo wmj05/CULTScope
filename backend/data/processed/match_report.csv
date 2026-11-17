@@ -1,0 +1,13 @@
+﻿seed_id,seed_title,seed_year,match_status,matched_title,tmdb_id,error
+1,Eraserhead,1977,matched,橡皮头,985,
+2,Pink Flamingos,1972,matched,粉红色的火烈鸟,692,
+3,The Rocky Horror Picture Show,1975,matched,洛基恐怖秀,36685,
+4,The Texas Chain Saw Massacre,1974,matched,德州电锯杀人狂,30497,
+5,Dawn of the Dead,1978,matched,活死人黎明,923,
+6,Videodrome,1983,matched,录影带谋杀案,837,
+7,Re-Animator,1985,matched,活跳尸,1694,
+8,Blue Velvet,1986,matched,蓝丝绒,793,
+9,Evil Dead II,1987,matched,鬼玩人2,765,
+10,Fight Club,1999,matched,搏击俱乐部,550,
+11,Donnie Darko,2001,matched,死亡幻觉,141,
+12,The Lighthouse,2019,matched,灯塔,503919,

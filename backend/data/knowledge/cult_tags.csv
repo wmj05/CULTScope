@@ -1,0 +1,23 @@
+tag_id,label_zh,label_en,dimension,definition,inclusion_criteria,exclusion_criteria,status,version
+aesthetic_body_horror,身体恐怖,Body Horror,aesthetic,"以身体变形、侵入、崩解或失控为核心恐惧来源的美学取向。","影片持续以身体变化、器官、感染或身体失控作为主要视觉与叙事焦点。","仅有血腥或死亡场面，但身体本身不是核心恐惧来源。",active,1.0
+aesthetic_surrealism,超现实主义,Surrealism,aesthetic,"以梦境逻辑、非理性意象和现实规则的悬置构建叙事。","影片持续使用梦境逻辑、非因果连接或非理性意象，并以此组织整体形式。","仅有个别梦境段落或象征镜头，整体仍遵循经典因果叙事。",active,1.0
+aesthetic_low_fi,粗粝低成本,Low-fi Roughness,aesthetic,"制作条件或影像质感上的粗粝感成为可感知的风格特征。","拍摄、录音、特效或布景的粗粝感持续可见，并参与影片美学表达。","仅预算较低，但成片质感与表达未呈现可辨识的粗粝风格。",active,1.0
+aesthetic_pastiche,类型拼贴,Genre Pastiche,aesthetic,"有意混合多种类型、语调或媒介，形成不稳定的文本结构。","影片明显并置两种以上类型惯例，且这种并置产生反讽、断裂或异质效果。","常规的类型混合，且各类型服务统一叙事目标，不构成拼贴。",active,1.0
+aesthetic_experimental_narrative,实验叙事,Experimental Narrative,aesthetic,"以非经典叙事结构、形式装置或时间空间实验为主要组织方式。","影片持续使用非线性、循环、分屏、错位视角等形式装置，并影响意义生成。","仅有简单反转、倒叙或梦境解释，整体仍属经典叙事。",active,1.0
+aesthetic_camp,坎普与夸张表演,Camp and Theatrical Excess,aesthetic,"以夸张表演、造作美学和反讽性过剩构成可辨识的坎普风格。","表演、服装、布景或对白呈现持续的风格化过剩，且文本或接受语境支持坎普式读解。","仅有表演生硬或制作粗糙，且缺乏坎普式读解的文本或接受证据。",active,1.0
+theme_sexual_transgression,性欲与越界,Sexual Transgression,theme,"以非规范性性欲、禁忌关系或性别越界作为核心主题。","性欲、性别或性规范的越界是推动叙事或引发争议的核心元素。","仅有顺带出现的裸露、性场面或浪漫关系，未触及规范越界。",active,1.0
+theme_violence_spectacle,暴力奇观,Violence as Spectacle,theme,"将暴力呈现为可观看、可消费的奇观，而非仅服务情节推进。","影片以持续、风格化的方式展示暴力，并使暴力本身成为观看吸引力。","暴力简短且主要服务情节推进，不以奇观化为组织原则。",active,1.0
+theme_consumerism_critique,消费主义批判,Consumerism Critique,theme,"通过叙事、空间或符号对消费社会、商品化或媒体社会进行批判。","影片明确以消费主义、商品化或媒体操纵为批判对象，并有可辨识的叙事或视觉论证。","仅出现商品、商场或广告背景，未形成批判性表达。",active,1.0
+theme_occult_religion,宗教神秘学,Occult and Religion,theme,"以秘教、异端宗教、仪式或神秘学宇宙观组织叙事与影像。","秘教、仪式或宗教神秘学构成影片的核心世界观或冲突来源。","仅有装饰性符号、占卜桥段或模糊宗教意象。",active,1.0
+theme_identity_anxiety,身份焦虑,Identity Anxiety,theme,"围绕自我、性别、阶级或身体边界的不稳定与焦虑展开。","主人公或叙事核心持续受身份不稳定、分裂或边界模糊驱动。","仅有一般成长困惑，未将身份不稳定作为核心冲突。",active,1.0
+theme_urban_alienation,都市异化,Urban Alienation,theme,"以城市、工业或现代空间表现个体的疏离与异化。","城市或工业空间与人物疏离感之间存在明确的叙事或视觉因果关系。","城市仅作为背景，未参与异化主题的表达。",active,1.0
+production_independent,独立制作,Independent Production,production,"影片在融资、制作或版权上独立于主流大厂体系。","有资料证明影片由独立公司、独立融资或独立制片路径完成。","仅由大厂旗下专门厂牌发行，且无独立制作证据。",active,1.0
+production_marginal_distribution,边缘发行,Marginal Distribution,production,"通过有限院线、午夜场、磨坊影院、艺术影院等边缘渠道发行。","有发行资料证明影片采用有限、边缘或非主流发行路径。","常规大规模发行，仅票房表现不佳。",active,1.0
+production_censorship_controversy,审查争议,Censorship Controversy,production,"影片的制作、发行或传播伴随审查、禁映或分级冲突。","存在可核查的审查行动、禁映决定、剪辑要求或组织化抗议。","仅收到一般负面评论或道德批评，无正式审查或组织化争议。",active,1.0
+production_nonmainstream_auteur,非主流作者,Non-mainstream Auteur,production,"导演或创作团队具有可辨识的作者性，并处于主流工业边缘。","有资料证明创作主导者的作者性，以及其非主流制作位置。","任何具有个人风格的导演，若无非主流位置证据，不构成该标签。",active,1.0
+reception_midnight_movie,午夜场,Midnight Movie,reception,"影片与午夜场放映制度、邪典专场或深夜观看文化形成稳定关联。","有节目单、放映史或报道证明影片长期进入午夜场或邪典专场。","仅有任何深夜电视播出或单次深夜场次。",active,1.0
+reception_video_era,录像带时代,Video Era,reception,"影片的传播与接受显著依赖录像带、DVD 或早期家庭影音流通。","有发行与接受资料证明录像带或 DVD 流通对影片传播具有关键作用。","仅有常规家庭影音发行，未影响影片的接受史。",active,1.0
+reception_fan_ritual,粉丝仪式,Fan Ritual,reception,"粉丝以重复性、参与式实践围绕影片形成仪式化观看。","有活动记录、社群档案或报道证明跟读台词、道具互动、Cosplay 等重复实践。","一般粉丝讨论、评分或二次创作，未形成仪式化观看。",active,1.0
+reception_cult_revival,口碑逆袭,Cult Revival,reception,"影片经历首轮失败或冷遇后，在后续传播中获得重新评价与追捧。","有资料证明首轮商业或评论失败，以及后续重映、影音发行或评论翻红。","首轮即为热门或意外卖座片，未经历明显的后期翻红。",active,1.0
+influence_remake_spinoff,翻拍与衍生,Remake and Spin-off,influence,"影片被翻拍、续写、重制或衍生为其他媒介作品。","存在可核查的翻拍、续集、前传、重启或跨媒介衍生作品。","仅有松散致敬或风格相似，无正式翻拍或衍生关系。",active,1.0
+influence_subcultural_symbol,亚文化符号化,Subcultural Symbol,influence,"影片的影像、台词或角色被亚文化、音乐、时尚或行动实践反复挪用。","有资料证明影片元素在特定亚文化或创作实践中被稳定、可识别地复用。","仅出现零散网络梗或短期流行，未形成稳定的亚文化符号关系。",active,1.0
