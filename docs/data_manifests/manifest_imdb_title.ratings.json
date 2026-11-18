@@ -1,0 +1,31 @@
+{
+  "dataset": "title.ratings",
+  "downloaded_at": null,
+  "excluded_breakdown": {
+    "duplicate_tconst": 0,
+    "excluded_invalid_rating": 0,
+    "excluded_invalid_votes": 0,
+    "excluded_orphan": 1386214,
+    "invalid_tconst": 0,
+    "malformed_rows": 0
+  },
+  "excluded_rows": 1386214,
+  "file_bytes": 8759471,
+  "filter_rules": [
+    "tconst in retained imdb_titles_movies",
+    "1.0 <= averageRating <= 10.0",
+    "numVotes >= 1",
+    "duplicate tconst: keep first"
+  ],
+  "git_commit": "2785574e3f028e839e273bc3c701f67d06d2b0b4",
+  "ingest_date": "2026-11-18",
+  "official_url": "https://datasets.imdbws.com/title.ratings.tsv.gz",
+  "output_file": "imdb_ratings.csv",
+  "output_rows": 347216,
+  "output_sha256": "86ae74fe91bf3ccb2c96fa1112e37c337617ba35946539b632edb31cdcded9e8",
+  "raw_rows": 1733430,
+  "retained_rows": 347216,
+  "script_version": "0.1.0",
+  "sha256": "bc714588770a53d61cdc4a6615d8beeca12c66313afdb182715504be20f253d4",
+  "source": "imdb"
+}

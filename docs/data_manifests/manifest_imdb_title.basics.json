@@ -1,0 +1,38 @@
+{
+  "dataset": "title.basics",
+  "downloaded_at": null,
+  "excluded_breakdown": {
+    "duplicate_tconst": 0,
+    "excluded_adult": 9098,
+    "excluded_invalid_is_adult": 0,
+    "excluded_title_type": 12212275,
+    "invalid_end_year": 0,
+    "invalid_runtime": 0,
+    "invalid_start_year": 0,
+    "invalid_tconst": 0,
+    "malformed_rows": 0,
+    "missing_end_year": 752108,
+    "missing_genres": 77621,
+    "missing_runtime": 267247,
+    "missing_start_year": 112709
+  },
+  "excluded_rows": 12221373,
+  "file_bytes": 230536607,
+  "filter_rules": [
+    "titleType == 'movie'",
+    "isAdult == '0'",
+    "tconst matches ^tt\\d{7,}$",
+    "duplicate tconst: keep first"
+  ],
+  "git_commit": "2785574e3f028e839e273bc3c701f67d06d2b0b4",
+  "ingest_date": "2026-11-18",
+  "official_url": "https://datasets.imdbws.com/title.basics.tsv.gz",
+  "output_file": "imdb_titles_movies.csv",
+  "output_rows": 752108,
+  "output_sha256": "dfd50a76c482c3a57cd0ce7d2664f8f22f3970991ef6264c6d83957cfba76f31",
+  "raw_rows": 12973481,
+  "retained_rows": 752108,
+  "script_version": "0.1.0",
+  "sha256": "cf13cd2251fe3ec1b17ac6906d9046a9e410bf70e1de0313562e6353fd2944bb",
+  "source": "imdb"
+}
