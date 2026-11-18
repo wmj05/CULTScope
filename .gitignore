@@ -28,3 +28,15 @@ Thumbs.db
 backend/data/.review_txn/
 # Knowledge review runtime lock
 backend/data/knowledge/.review.lock
+
+# 大规模外部数据（原始层与标准化层，禁止入库）
+# 注意：不忽略整个 backend/data/raw/，现有 TMDb 小样本需继续跟踪
+backend/data/raw/imdb/
+backend/data/raw/movielens/
+backend/data/processed/large/
+# IMDb / MovieLens 原始压缩包
+*.tsv.gz
+*.zip
+
+# 小体积聚合结果（backend/data/analytics/）不整目录忽略，
+# 采用显式白名单 + 人工批准后入库，避免大文件被宽泛规则漏进版本库。
