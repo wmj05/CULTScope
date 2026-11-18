@@ -24,6 +24,8 @@ Thumbs.db
 *.log
 # Temporary development files
 *.tmp
+# 下载器未完成的临时文件
+*.part
 .screenshots/
 backend/data/.review_txn/
 # Knowledge review runtime lock
