@@ -1,0 +1,21 @@
+candidate_id,original_source_status,second_source_status,evidence_quality,supported_criteria,unsupported_criteria,review_recommendation,reviewer,review_status,notes
+CB01-001,verified,unavailable,insufficient,,C5,not_recommended_yet,,needs_more_evidence,未找到可读取的独立第二来源；保留候选，不进入正式知识库
+CB01-002,verified,verified,moderate,C5|C7,,priority_review,,pending_human_review,第二来源支持形式分析；评论争议仍依赖第一来源
+CB01-003,verified,verified,moderate,C4|C5|C7,,priority_review,,pending_human_review,第二来源与第一来源同属 BFI，需补独立机构来源
+CB01-004,verified,verified,moderate,C5,,review_after_evidence,,pending_human_review,第二来源仅提供间接形式证据
+CB01-005,verified,verified,strong,C1|C4,,priority_review,,pending_human_review,两个来源分别支持审查争议与午夜场放映
+CB01-006,verified,verified,weak,,C5,not_recommended_yet,,needs_more_evidence,第二来源为发行商宣传文案，C5 仍无制作或形式证据
+CB01-007,verified,verified,strong,C5|C7,,priority_review,,pending_human_review,第二来源直接呈现评价变化
+CB01-008,verified,verified,weak,,C3,not_recommended_yet,,needs_more_evidence,现有来源只描述亚文化题材，未证明影片被社群用作身份资源
+CB01-009,verified,verified,strong,C5|C7,,priority_review,,pending_human_review,学术论文同时支持重新评价与形式分析
+CB01-010,verified,verified,moderate,C5,,review_after_evidence,,pending_human_review,第二来源为学术形式分析，属间接证据
+CB01-011,verified,verified,moderate,C5,,review_after_evidence,,pending_human_review,第二来源讨论导演整体制作条件，需在审核时限定到本片
+CB01-012,verified,not_found,insufficient,,C7,not_recommended_yet,,needs_more_evidence,未找到可读取的独立第二来源
+CB01-013,verified,verified,strong,C5,,priority_review,,pending_human_review,第二来源直接记录自筹资金与非常规制作过程
+CB01-014,verified,verified,strong,C5|C7,,priority_review,,pending_human_review,第二来源同时支持接受争议与形式分析
+CB01-015,verified,verified,weak,,C5,not_recommended_yet,,needs_more_evidence,第二来源为放映简介，未支持 C5
+CB01-016,verified,verified,moderate,C5,,review_after_evidence,,pending_human_review,第二来源为间接形式证据
+CB01-017,verified,verified,strong,C1|C5,,priority_review,,pending_human_review,第二来源与第一来源同属 Criterion，需补独立机构来源
+CB01-018,verified,verified,strong,C4|C5,,priority_review,,pending_human_review,禁映与删减记录明确，另有制作方式证据
+CB01-019,verified,verified,strong,C1|C5,,priority_review,,pending_human_review,午夜场起源与形式分析均有独立学术来源
+CB01-020,verified,verified,strong,C1|C5,,priority_review,,pending_human_review,午夜场起源与形式分析均有独立学术来源

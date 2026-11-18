@@ -1,0 +1,13 @@
+﻿explore_seed_id,knowledge_seed_id,tmdb_id,imdb_id,match_method,match_status,notes
+1,CS-0001,985,tt0074486,tmdb_id,confirmed,TMDb ID 一致（985）；年份一致
+2,CS-0002,692,tt0069089,tmdb_id,confirmed,TMDb ID 一致（692）；年份一致
+3,CS-0003,36685,tt0073629,tmdb_id,confirmed,TMDb ID 一致（36685）；年份一致
+4,CS-0004,30497,tt0072271,tmdb_id,confirmed,TMDb ID 一致（30497）；年份一致
+5,CS-0005,923,tt0077402,tmdb_id,confirmed,TMDb ID 一致（923）；年份一致
+6,CS-0006,837,tt0086541,tmdb_id,confirmed,TMDb ID 一致（837）；年份一致
+7,CS-0007,1694,tt0089885,tmdb_id,confirmed,TMDb ID 一致（1694）；年份一致
+8,CS-0008,793,tt0090756,tmdb_id,confirmed,TMDb ID 一致（793）；年份一致
+9,CS-0009,765,tt0092991,tmdb_id,confirmed,TMDb ID 一致（765）；年份一致
+10,CS-0010,550,tt0137523,tmdb_id,confirmed,TMDb ID 一致（550）；年份一致
+11,CS-0011,141,tt0246578,tmdb_id,confirmed,TMDb ID 一致（141）；年份一致
+12,CS-0012,503919,tt7984734,tmdb_id,confirmed,TMDb ID 一致（503919）；年份一致
