@@ -2,6 +2,10 @@
 export function parseRoute(hash) {
   const raw = String(hash ?? '').replace(/^#\/?/, '')
 
+  if (raw === 'imdb' || raw === 'imdb/') {
+    return { name: 'imdb', seedId: '', invalid: false }
+  }
+
   if (raw === 'knowledge' || raw === 'knowledge/') {
     return { name: 'knowledge', seedId: '', invalid: false }
   }

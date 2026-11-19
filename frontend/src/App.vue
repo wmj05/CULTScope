@@ -6,6 +6,7 @@ import DecadeBarChart from './components/DecadeBarChart.vue'
 import GenreBarChart from './components/GenreBarChart.vue'
 import RatingScatterChart from './components/RatingScatterChart.vue'
 import { parseRoute } from './router'
+import ImdbStatsView from './views/ImdbStatsView.vue'
 import KnowledgeDetailView from './views/KnowledgeDetailView.vue'
 import KnowledgeView from './views/KnowledgeView.vue'
 
@@ -92,7 +93,11 @@ onUnmounted(() => window.removeEventListener('hashchange', handleHashChange))
       <a class="site-brand" href="#/">CULT<span>Scope</span></a>
       <div class="nav-links">
         <a href="#/" :class="{ active: route.name === 'dashboard' }">数据看板</a>
-        <a href="#/knowledge" :class="{ active: route.name !== 'dashboard' }">Cult 知识库</a>
+        <a href="#/imdb" :class="{ active: route.name === 'imdb' }">IMDb 统计</a>
+        <a
+          href="#/knowledge"
+          :class="{ active: ['knowledge', 'knowledge-detail', 'invalid-route'].includes(route.name) }"
+        >Cult 知识库</a>
       </div>
     </nav>
 
@@ -241,6 +246,7 @@ onUnmounted(() => window.removeEventListener('hashchange', handleHashChange))
     </footer>
     </template>
 
+    <ImdbStatsView v-else-if="route.name === 'imdb'" />
     <KnowledgeView v-else-if="route.name === 'knowledge'" />
     <KnowledgeDetailView v-else-if="route.name === 'knowledge-detail'" :seed-id="route.seedId" />
     <section v-else class="card state-card">
