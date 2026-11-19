@@ -12,6 +12,7 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 
 BACKEND_DIR = Path(__file__).resolve().parents[1]
 if str(BACKEND_DIR) not in sys.path:
@@ -223,6 +224,30 @@ class ImdbApiTest(unittest.TestCase):
         response = self.client.get(ENDPOINT)
         self.assertEqual(response.status_code, 503)
         self.assertIn("尚未生成", response.json()["detail"])
+        self._assert_no_path_leak(response)
+
+    def test_unreadable_file_returns_503(self) -> None:
+        # 用同名目录模拟“存在但无法读取”，覆盖 OSError 分支且不触碰真实数据
+        self.aggregate_path.unlink()
+        self.aggregate_path.mkdir()
+        response = self.client.get(ENDPOINT)
+        self.assertEqual(response.status_code, 503)
+        self.assertIn("无法读取", response.json()["detail"])
+        self._assert_no_path_leak(response)
+
+    def test_internal_error_returns_500_without_leaking_details(self) -> None:
+        client = TestClient(app, raise_server_exceptions=False)
+        try:
+            with mock.patch.object(
+                imdb_aggregate_service,
+                "load_aggregates",
+                side_effect=RuntimeError(f"boom at {self.aggregate_path}"),
+            ):
+                response = client.get(ENDPOINT)
+        finally:
+            client.close()
+        self.assertEqual(response.status_code, 500)
+        self.assertNotIn("boom", response.text)
         self._assert_no_path_leak(response)
 
     def test_corrupt_json_returns_503(self) -> None:
