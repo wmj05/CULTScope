@@ -4,6 +4,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.api.cult import router as cult_router
+from app.api.imdb import router as imdb_router
 from app.api.movies import router as movies_router
 from app.core.config import settings
 
@@ -23,6 +24,7 @@ app.add_middleware(
 
 app.include_router(movies_router)
 app.include_router(cult_router)
+app.include_router(imdb_router)
 
 
 @app.get("/", tags=["system"])
