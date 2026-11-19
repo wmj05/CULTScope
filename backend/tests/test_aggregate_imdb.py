@@ -509,6 +509,52 @@ class AggregateImdbTest(unittest.TestCase):
         self.assertEqual(report["quality_flags"]["invalid_ratings_skipped"], 1)
         self.assertEqual(report["quality_flags"]["invalid_votes_skipped"], 1)
 
+    # ---------- 覆盖率分母与合计 ----------
+
+    def test_coverage_ratio_matches_denominator(self) -> None:
+        basics = [
+            ["tt0000001", "movie", "A", "A", "0", "2000", "", "100", "Drama", "2026-11-18"],
+            ["tt0000002", "movie", "B", "B", "0", "2001", "", "80", "Comedy", "2026-11-18"],
+            ["tt0000003", "movie", "C", "C", "0", "2002", "", "60", "Horror", "2026-11-18"],
+        ]
+        ratings = [["tt0000001", "8.0", "100", "2026-11-18"]]
+        report = self._run(basics, ratings)
+        self.assertAlmostEqual(report["coverage"]["coverage_ratio"], round(1 / 3, 6), places=6)
+        self.assertEqual(
+            report["coverage"]["rated_movies"] + report["coverage"]["unrated_movies"],
+            report["coverage"]["total_movies"],
+        )
+
+    # ---------- 有评分记录但评分无效：趋势均值为 null，且不进入评分分布 ----------
+
+    def test_year_trend_null_mean_when_rating_invalid(self) -> None:
+        basics = [
+            ["tt0000001", "movie", "A", "A", "0", "2000", "", "100", "Drama", "2026-11-18"],
+        ]
+        ratings = [["tt0000001", "bad", "100", "2026-11-18"]]
+        report = self._run(basics, ratings)
+        entry = report["year_rating_trend"][2000]
+        self.assertEqual(entry["rated_count"], 1)
+        self.assertEqual(entry["valid_rating_count"], 0)
+        self.assertIsNone(entry["rating_mean"])
+        self.assertEqual(entry["valid_votes_count"], 1)
+        self.assertEqual(entry["votes_mean"], 100.0)
+        self.assertEqual(report["rating_distribution"], {})
+        self.assertEqual(report["votes_distribution"], {"11-100": 1})
+        self.assertEqual(report["quality_flags"]["invalid_ratings_skipped"], 1)
+
+    # ---------- 0 分不作为评分桶统计 ----------
+
+    def test_zero_rating_excluded_from_buckets(self) -> None:
+        basics = [
+            ["tt0000001", "movie", "A", "A", "0", "2000", "", "100", "Drama", "2026-11-18"],
+        ]
+        ratings = [["tt0000001", "0.0", "100", "2026-11-18"]]
+        report = self._run(basics, ratings)
+        self.assertNotIn("0.0-0.5", report["rating_distribution"])
+        self.assertEqual(report["rating_distribution"], {})
+        self.assertEqual(report["quality_flags"]["invalid_ratings_skipped"], 1)
+
 
 if __name__ == "__main__":
     unittest.main()

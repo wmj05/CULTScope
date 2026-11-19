@@ -101,7 +101,7 @@ onBeforeUnmount(() => {
         <article class="imdb-stat-card">
           <span class="stat-label">已评分电影</span>
           <strong class="rated">{{ formatNumber(model.coverage.rated) }}</strong>
-          <span class="stat-help">成功关联有效 IMDb 评分</span>
+          <span class="stat-help">已关联 IMDb 评分记录</span>
         </article>
         <article class="imdb-stat-card">
           <span class="stat-label">评分覆盖率</span>
@@ -120,11 +120,15 @@ onBeforeUnmount(() => {
         {{ formatNumber(model.invalidYear) }} 部，未来年份 {{ formatNumber(model.futureYear) }} 部。
       </p>
 
+      <p class="year-note">{{ model.qualityNote }}</p>
+
       <section class="charts-grid">
         <article class="chart-card wide">
           <header class="chart-head">
             <h2>年代分布</h2>
-            <p class="chart-sub">按聚合数据中的上映年份每十年归组，对比电影总量与已评分电影数。</p>
+            <p class="chart-sub">
+              按聚合数据中的上映年份每十年归组，对比电影总量与已评分电影数；缺失、异常和未来年份不计入本图，见上方年份补充说明。
+            </p>
           </header>
           <EChart
             :option="decadeOption"
@@ -163,7 +167,9 @@ onBeforeUnmount(() => {
         <article class="chart-card">
           <header class="chart-head">
             <h2>投票分布</h2>
-            <p class="chart-sub">投票桶及顺序沿用后端聚合定义，不改变原始统计口径。</p>
+            <p class="chart-sub">
+              投票桶及顺序沿用后端聚合定义，不改变原始统计口径；无效或缺失票数不计入本图。
+            </p>
           </header>
           <EChart
             :option="votesOption"

@@ -12,6 +12,7 @@ import {
 } from '../src/imdb/chartOptions.js'
 import {
   MULTI_GENRE_NOTE,
+  TREND_NOTE,
   buildImdbViewModel,
   formatPercent,
   toDecadeSeries,
@@ -126,6 +127,51 @@ test('多类型电影重复计入说明明确保留', () => {
   assert.equal(makeGenreOption(genres).yAxis.inverse, true)
 })
 
+test('无效评分与无效票数被明确标记为不计入分布', () => {
+  const model = buildImdbViewModel({
+    coverage: { total_movies: 5, rated_movies: 2, unrated_movies: 3, coverage_ratio: 0.4 },
+    quality_flags: { invalid_ratings_skipped: 3, invalid_votes_skipped: 2 }
+  })
+  assert.equal(model.invalidRatingsSkipped, 3)
+  assert.equal(model.invalidVotesSkipped, 2)
+  assert.match(model.qualityNote, /无效评分记录 3 条/)
+  assert.match(model.qualityNote, /无效票数记录 2 条/)
+  assert.match(model.qualityNote, /不计入评分分布与投票分布/)
+})
+
+test('年代分布只统计有效年份，缺失、异常和未来年份不计入', () => {
+  const model = buildImdbViewModel({
+    coverage: {
+      total_movies: 11,
+      rated_movies: 4,
+      unrated_movies: 7,
+      coverage_ratio: 0.363636
+    },
+    year_distribution: {
+      per_year: {
+        1999: { total_movies: 2, rated_movies: 1 },
+        2001: { total_movies: 3, rated_movies: 2 }
+      },
+      missing_year: 4,
+      invalid_year: 1,
+      future_year: 1
+    }
+  })
+  assert.deepEqual(model.decadeDistribution, [
+    { decade: '1990s', total: 2, rated: 1 },
+    { decade: '2000s', total: 3, rated: 2 }
+  ])
+  const decadeTotal = model.decadeDistribution.reduce((sum, entry) => sum + entry.total, 0)
+  assert.equal(decadeTotal, 5)
+  assert.ok(decadeTotal < model.coverage.total)
+  const excludedTotal = model.missingYear + model.invalidYear + model.futureYear
+  assert.equal(excludedTotal, 6)
+  // 正常年份 + 缺失 + 异常 + 未来年份必须回到电影总数
+  assert.equal(decadeTotal + excludedTotal, model.coverage.total)
+  // 覆盖率分母一致性
+  assert.equal(model.coverage.rated + model.coverage.unrated, model.coverage.total)
+})
+
 test('年份趋势保留 null 均值且不在图表中转换为 0', () => {
   const trend = toTrendSeries({
     1901: { rating_mean: 7.5, valid_rating_count: 4, rated_count: 5 },
@@ -145,6 +191,8 @@ test('年份趋势保留 null 均值且不在图表中转换为 0', () => {
   assert.equal(option.yAxis[0].max, 10)
   assert.deepEqual(option.series.map((series) => series.yAxisIndex), [0, 1])
   assert.deepEqual(option.dataZoom.map((zoom) => zoom.type), ['inside', 'slider'])
+  assert.match(TREND_NOTE, /有效样本数/)
+  assert.match(TREND_NOTE, /评分无效的样本不计入均值/)
   for (const zoom of option.dataZoom) {
     assert.equal(zoom.xAxisIndex, 0)
     assert.equal(zoom.start, 0)

@@ -2,7 +2,7 @@ export const MULTI_GENRE_NOTE =
   '一部电影可属于多个 IMDb 类型，会分别计入各类型，因此类型计数之和可能大于电影总数。'
 
 export const TREND_NOTE =
-  '平均评分只使用有效评分样本；样本量较小的年份波动较大，不应视为可靠趋势。'
+  '平均评分只使用有效评分样本，柱状图展示对应有效样本数；已有评分记录但评分无效的样本不计入均值。样本量较小的年份波动较大，不应视为可靠趋势。'
 
 function asCount(value) {
   return Number.isFinite(Number(value)) ? Number(value) : 0
@@ -71,6 +71,8 @@ export function buildImdbViewModel(payload = {}) {
   )
   const yearTrend = toTrendSeries(payload.year_rating_trend)
   const total = asCount(coverage.total_movies)
+  const invalidRatingsSkipped = asCount(payload.quality_flags?.invalid_ratings_skipped)
+  const invalidVotesSkipped = asCount(payload.quality_flags?.invalid_votes_skipped)
 
   return {
     coverage: {
@@ -90,6 +92,10 @@ export function buildImdbViewModel(payload = {}) {
     futureYear: asCount(yearDistribution.future_year),
     qualityFlags: payload.quality_flags ?? {},
     duplicateCounts: payload.duplicate_counts ?? {},
+    invalidRatingsSkipped,
+    invalidVotesSkipped,
+    // 明确区分无效评分与无效票数：两者均不进入对应分布图
+    qualityNote: `无效评分记录 ${invalidRatingsSkipped} 条、无效票数记录 ${invalidVotesSkipped} 条不计入评分分布与投票分布。`,
     decadeDistribution,
     genreDistribution,
     ratingDistribution,
