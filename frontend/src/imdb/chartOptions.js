@@ -17,6 +17,7 @@ function baseOption() {
     textStyle: { color: COLORS.text, fontFamily: 'Segoe UI, Microsoft YaHei, sans-serif' },
     tooltip: {
       trigger: 'axis',
+      confine: true,
       backgroundColor: 'rgba(20, 17, 24, 0.96)',
       borderColor: 'rgba(255, 255, 255, 0.12)',
       textStyle: { color: '#e8e3ee' }
@@ -46,7 +47,7 @@ function valueAxis(name, extra = {}) {
     name,
     nameTextStyle: { color: COLORS.text },
     min: 0,
-    axisLabel: { color: COLORS.text, formatter: (value) => countFormatter(value) },
+    axisLabel: { color: COLORS.text, formatter: (value) => countFormatter(value), hideOverlap: true },
     splitLine: { lineStyle: { color: COLORS.line } },
     ...extra
   }
@@ -81,9 +82,12 @@ export function makeGenreOption(data = []) {
   const option = baseOption()
   return {
     ...option,
-    grid: { ...option.grid, left: 104, right: 38, top: 52, bottom: 42 },
+    grid: { ...option.grid, left: 104, right: 38, top: 52, bottom: 56 },
     tooltip: { ...option.tooltip, valueFormatter: countFormatter },
-    xAxis: valueAxis('计入次数'),
+    xAxis: valueAxis('计入次数', {
+      nameLocation: 'middle',
+      nameGap: 30
+    }),
     yAxis: categoryAxis(data.map((entry) => entry.genre), { inverse: true }),
     series: [
       {
@@ -150,7 +154,7 @@ export function makeTrendOption(data = []) {
   const option = baseOption()
   return {
     ...option,
-    grid: { ...option.grid, right: 76, bottom: 72 },
+    grid: { ...option.grid, right: 76, bottom: 72, top: 76 },
     dataZoom: [
       {
         type: 'inside',
@@ -176,8 +180,13 @@ export function makeTrendOption(data = []) {
     ],
     xAxis: categoryAxis(data.map((entry) => entry.year)),
     yAxis: [
-      valueAxis('平均评分', { min: 0, max: 10, axisLabel: { color: COLORS.text } }),
-      valueAxis('有效样本数', { splitLine: { show: false } })
+      valueAxis('平均评分', {
+        min: 0,
+        max: 10,
+        nameGap: 12,
+        axisLabel: { color: COLORS.text }
+      }),
+      valueAxis('有效样本数', { splitLine: { show: false }, nameGap: 36 })
     ],
     series: [
       {

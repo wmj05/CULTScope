@@ -210,10 +210,33 @@ test('所有图表配置提供 Tooltip 和图例', () => {
   ]
   for (const option of options) {
     assert.equal(option.tooltip.trigger, 'axis')
+    assert.equal(option.tooltip.confine, true)
     assert.notEqual(option.legend.show, false)
   }
   assert.deepEqual(options[0].series.map((series) => series.name), ['电影总量', '已有 IMDb 评分'])
   assert.equal(options[4].legend.show, undefined)
+})
+
+test('窄屏下轴名称与数值标签配置避免裁切和重叠', () => {
+  const genre = makeGenreOption([{ genre: 'Documentary', count: 1 }])
+  assert.equal(genre.xAxis.name, '计入次数')
+  assert.equal(genre.xAxis.nameLocation, 'middle')
+  assert.ok(genre.grid.bottom >= 56)
+  assert.equal(genre.xAxis.axisLabel.hideOverlap, true)
+
+  const rating = makeRatingOption([{ bucket: '7.5-8.0', count: 1 }])
+  assert.equal(rating.yAxis.axisLabel.hideOverlap, true)
+
+  const trend = makeTrendOption([{ year: 2000, ratingMean: 8, validRatingCount: 1 }])
+  assert.ok(trend.grid.top >= 76)
+  assert.deepEqual(
+    trend.yAxis.map((axis) => axis.nameGap),
+    [12, 36]
+  )
+  assert.deepEqual(
+    trend.yAxis.map((axis) => axis.name),
+    ['平均评分', '有效样本数']
+  )
 })
 
 test('IMDb 路由可用且原有路由行为不变', () => {
