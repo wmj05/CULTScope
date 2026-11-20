@@ -1,5 +1,5 @@
 <script setup>
-import { computed, onMounted, onUnmounted, reactive, ref, watch } from 'vue'
+import { computed, defineAsyncComponent, onMounted, onUnmounted, reactive, ref, watch } from 'vue'
 
 import http from './api/http'
 import { describeApiError } from './dashboard/errors'
@@ -9,9 +9,18 @@ import DecadeBarChart from './components/DecadeBarChart.vue'
 import GenreBarChart from './components/GenreBarChart.vue'
 import RatingScatterChart from './components/RatingScatterChart.vue'
 import { parseRoute } from './router'
-import ImdbStatsView from './views/ImdbStatsView.vue'
-import KnowledgeDetailView from './views/KnowledgeDetailView.vue'
-import KnowledgeView from './views/KnowledgeView.vue'
+
+const ImdbStatsView = defineAsyncComponent(
+  () => import('./views/ImdbStatsView.vue')
+)
+
+const KnowledgeDetailView = defineAsyncComponent(
+  () => import('./views/KnowledgeDetailView.vue')
+)
+
+const KnowledgeView = defineAsyncComponent(
+  () => import('./views/KnowledgeView.vue')
+)
 
 const route = ref(parseRoute(window.location.hash))
 
