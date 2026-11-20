@@ -9,12 +9,15 @@ from app.services import movie_service
 
 router = APIRouter(prefix="/api/movies", tags=["movies"])
 
+# 仅返回固定文案：内部异常可能包含本机绝对路径，不能直接透传给客户端
+MOVIES_DATA_UNAVAILABLE = "电影数据暂时不可用，请稍后重试"
+
 
 def _load_or_500(loader):
     try:
         return loader()
-    except FileNotFoundError as exc:
-        raise HTTPException(status_code=500, detail=str(exc)) from exc
+    except OSError as exc:
+        raise HTTPException(status_code=500, detail=MOVIES_DATA_UNAVAILABLE) from exc
 
 
 @router.get("", response_model=MovieListResponse, summary="电影列表（可按年代、类型筛选）")
