@@ -28,6 +28,7 @@ function buildOption() {
     grid: { left: 56, right: 28, top: 36, bottom: 52 },
     tooltip: {
       trigger: 'item',
+      confine: true,
       backgroundColor: '#17131c',
       borderColor: '#3a3145',
       textStyle: { color: '#e8e3ee', fontSize: 12 },

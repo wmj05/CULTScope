@@ -18,6 +18,7 @@ function buildOption() {
     tooltip: {
       trigger: 'axis',
       axisPointer: { type: 'shadow' },
+      confine: true,
       backgroundColor: '#17131c',
       borderColor: '#3a3145',
       textStyle: { color: '#e8e3ee' },

@@ -2,6 +2,9 @@
 import { computed, onMounted, onUnmounted, reactive, ref, watch } from 'vue'
 
 import http from './api/http'
+import { describeApiError } from './dashboard/errors'
+import { buildMovieParams } from './dashboard/query'
+import { createRequestSequence } from './dashboard/requestSequence'
 import DecadeBarChart from './components/DecadeBarChart.vue'
 import GenreBarChart from './components/GenreBarChart.vue'
 import RatingScatterChart from './components/RatingScatterChart.vue'
@@ -27,35 +30,43 @@ const loadingMovies = ref(false)
 const statsError = ref('')
 const listError = ref('')
 
+// 请求序号：只有最新一次请求可以更新对应状态，避免旧响应覆盖新结果
+const statsRequests = createRequestSequence()
+const listRequests = createRequestSequence()
+
 const hasFilter = computed(() => Boolean(filters.decade || filters.genre))
 const totalSample = computed(() => stats.value?.sample_size ?? movies.value.length)
 
 async function loadStats() {
+  if (loadingStats.value) return
+  const requestId = statsRequests.begin()
   loadingStats.value = true
   statsError.value = ''
   try {
     const { data } = await http.get('/movies/stats')
+    if (!statsRequests.isLatest(requestId)) return
     stats.value = data
   } catch (err) {
-    statsError.value = err.message
+    if (!statsRequests.isLatest(requestId)) return
+    statsError.value = describeApiError(err)
   } finally {
-    loadingStats.value = false
+    if (statsRequests.isLatest(requestId)) loadingStats.value = false
   }
 }
 
 async function loadMovies() {
+  const requestId = listRequests.begin()
   loadingMovies.value = true
   listError.value = ''
   try {
-    const params = {}
-    if (filters.decade) params.decade = filters.decade
-    if (filters.genre) params.genre = filters.genre
-    const { data } = await http.get('/movies', { params })
+    const { data } = await http.get('/movies', { params: buildMovieParams(filters) })
+    if (!listRequests.isLatest(requestId)) return
     movies.value = data.movies
   } catch (err) {
-    listError.value = err.message
+    if (!listRequests.isLatest(requestId)) return
+    listError.value = describeApiError(err)
   } finally {
-    loadingMovies.value = false
+    if (listRequests.isLatest(requestId)) loadingMovies.value = false
   }
 }
 
@@ -109,7 +120,13 @@ onUnmounted(() => window.removeEventListener('hashchange', handleHashChange))
     </header>
 
     <p v-if="loadingStats" class="card loading-text">正在加载样本统计 ...</p>
-    <p v-else-if="statsError" class="card err">统计接口加载失败：{{ statsError }}</p>
+    <div v-else-if="statsError" class="card err">
+      统计接口加载失败：{{ statsError }}
+      <button type="button" class="reset-btn" :disabled="loadingStats" @click="loadStats">
+        重新加载
+      </button>
+      <span v-if="stats">（以下图表为上次成功加载的数据，可能不是最新结果）</span>
+    </div>
 
     <section v-if="stats" class="sample-banner">
       <span class="sample-badge">SAMPLE N={{ stats.sample_size }}</span>
@@ -176,13 +193,18 @@ onUnmounted(() => window.removeEventListener('hashchange', handleHashChange))
         </div>
       </div>
 
-      <p class="result-count">
+      <p v-if="!loadingMovies && !listError" class="result-count">
         当前显示 {{ movies.length }} / {{ totalSample }} 部
         <span v-if="hasFilter">（已按筛选条件过滤）</span>
       </p>
 
       <p v-if="loadingMovies" class="loading-text">正在加载电影列表 ...</p>
-      <p v-else-if="listError" class="err">列表接口加载失败：{{ listError }}</p>
+      <div v-else-if="listError" class="err">
+        列表接口加载失败：{{ listError }}
+        <button type="button" class="reset-btn" :disabled="loadingMovies" @click="loadMovies">
+          重新加载
+        </button>
+      </div>
       <p v-else-if="!movies.length" class="empty-text">没有符合当前筛选条件的电影。</p>
 
       <div v-else class="table-wrap">
