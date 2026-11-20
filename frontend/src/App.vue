@@ -1,5 +1,5 @@
 <script setup>
-import { computed, defineAsyncComponent, onMounted, onUnmounted, reactive, ref, watch } from 'vue'
+import { computed, defineAsyncComponent, defineComponent, h, onMounted, onUnmounted, reactive, ref, watch } from 'vue'
 
 import http from './api/http'
 import { describeApiError } from './dashboard/errors'
@@ -10,15 +10,52 @@ import GenreBarChart from './components/GenreBarChart.vue'
 import RatingScatterChart from './components/RatingScatterChart.vue'
 import { parseRoute } from './router'
 
-const ImdbStatsView = defineAsyncComponent(
+// 异步页面加载状态：短暂加载不显示，避免页面闪烁
+const AsyncPageLoading = defineComponent({
+  name: 'AsyncPageLoading',
+  setup() {
+    return () => h('section', { class: 'card state-card', role: 'status' }, [
+      h('p', '正在加载页面，请稍候…'),
+    ])
+  },
+})
+
+// 异步页面加载失败：提供明确提示与整页重试
+const AsyncPageError = defineComponent({
+  name: 'AsyncPageError',
+  setup() {
+    return () => h('section', { class: 'card state-card', role: 'alert' }, [
+      h('h2', '页面加载失败'),
+      h('p', '页面资源暂时无法加载，请检查网络连接后重试。'),
+      h('button', {
+        type: 'button',
+        class: 'reset-btn',
+        onClick: () => window.location.reload(),
+      }, '重新加载页面'),
+    ])
+  },
+})
+
+// 三个异步页面共用相同的加载与错误处理规则
+function createAsyncPage(loader) {
+  return defineAsyncComponent({
+    loader,
+    loadingComponent: AsyncPageLoading,
+    errorComponent: AsyncPageError,
+    delay: 200,
+    timeout: 15000,
+  })
+}
+
+const ImdbStatsView = createAsyncPage(
   () => import('./views/ImdbStatsView.vue')
 )
 
-const KnowledgeDetailView = defineAsyncComponent(
+const KnowledgeDetailView = createAsyncPage(
   () => import('./views/KnowledgeDetailView.vue')
 )
 
-const KnowledgeView = defineAsyncComponent(
+const KnowledgeView = createAsyncPage(
   () => import('./views/KnowledgeView.vue')
 )
 
