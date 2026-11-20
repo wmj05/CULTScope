@@ -1,6 +1,7 @@
 <script setup>
 import { computed, defineAsyncComponent, defineComponent, h, onMounted, onUnmounted, reactive, ref, watch } from 'vue'
 
+import { createAsyncPageOptions, reloadAsyncPage } from './asyncPages'
 import http from './api/http'
 import { describeApiError } from './dashboard/errors'
 import { buildMovieParams } from './dashboard/query'
@@ -30,7 +31,7 @@ const AsyncPageError = defineComponent({
       h('button', {
         type: 'button',
         class: 'reset-btn',
-        onClick: () => window.location.reload(),
+        onClick: () => reloadAsyncPage(window),
       }, '重新加载页面'),
     ])
   },
@@ -38,13 +39,9 @@ const AsyncPageError = defineComponent({
 
 // 三个异步页面共用相同的加载与错误处理规则
 function createAsyncPage(loader) {
-  return defineAsyncComponent({
-    loader,
-    loadingComponent: AsyncPageLoading,
-    errorComponent: AsyncPageError,
-    delay: 200,
-    timeout: 15000,
-  })
+  return defineAsyncComponent(
+    createAsyncPageOptions(loader, AsyncPageLoading, AsyncPageError)
+  )
 }
 
 const ImdbStatsView = createAsyncPage(
