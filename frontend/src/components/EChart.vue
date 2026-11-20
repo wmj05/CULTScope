@@ -1,5 +1,5 @@
 <script setup>
-import * as echarts from 'echarts'
+import { echarts } from '../echarts.js'
 import { nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 
 const props = defineProps({
