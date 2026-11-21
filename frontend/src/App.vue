@@ -198,7 +198,7 @@ onUnmounted(() => window.removeEventListener('hashchange', handleHashChange))
       <a class="site-brand" href="#/">CULT<span>Scope</span></a>
       <div class="nav-links">
         <a href="#/" :class="{ active: route.name === 'dashboard' }">数据看板</a>
-        <a href="#/imdb" :class="{ active: route.name === 'imdb' }">IMDb 统计</a>
+        <a href="#/imdb" :class="{ active: route.name === 'imdb' }">Cult 电影研究</a>
         <a
           href="#/knowledge"
           :class="{ active: ['knowledge', 'knowledge-detail', 'invalid-route'].includes(route.name) }"
