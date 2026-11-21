@@ -6,9 +6,7 @@ import http from './api/http'
 import { describeApiError } from './dashboard/errors'
 import { buildMovieParams } from './dashboard/query'
 import { createRequestSequence } from './dashboard/requestSequence'
-import DecadeBarChart from './components/DecadeBarChart.vue'
-import GenreBarChart from './components/GenreBarChart.vue'
-import RatingScatterChart from './components/RatingScatterChart.vue'
+
 import { parseRoute } from './router'
 
 // 异步页面加载状态：短暂加载不显示，避免页面闪烁
@@ -44,6 +42,59 @@ function createAsyncPage(loader) {
   )
 }
 
+// CULTScope 3.5.7B: 图表异步加载状态
+const AsyncChartLoading = defineComponent({
+  name: 'AsyncChartLoading',
+  setup() {
+    return () => h(
+      'div',
+      { class: 'chart-async-state', role: 'status' },
+      '正在加载图表…'
+    )
+  },
+})
+
+// 图表资源加载失败时提供恢复操作
+const AsyncChartError = defineComponent({
+  name: 'AsyncChartError',
+  setup() {
+    return () => h(
+      'div',
+      { class: 'chart-async-state', role: 'alert' },
+      [
+        h('p', '图表加载失败'),
+        h('button', {
+          type: 'button',
+          class: 'reset-btn',
+          onClick: () => reloadAsyncPage(window),
+        }, '重新加载页面'),
+      ]
+    )
+  },
+})
+
+// 复用现有异步加载参数，使用图表专属状态组件
+function createAsyncChart(loader) {
+  return defineAsyncComponent(
+    createAsyncPageOptions(
+      loader,
+      AsyncChartLoading,
+      AsyncChartError
+    )
+  )
+}
+
+const DecadeBarChart = createAsyncChart(
+  () => import('./components/DecadeBarChart.vue')
+)
+
+const GenreBarChart = createAsyncChart(
+  () => import('./components/GenreBarChart.vue')
+)
+
+const RatingScatterChart = createAsyncChart(
+  () => import('./components/RatingScatterChart.vue')
+)
 const ImdbStatsView = createAsyncPage(
   () => import('./views/ImdbStatsView.vue')
 )

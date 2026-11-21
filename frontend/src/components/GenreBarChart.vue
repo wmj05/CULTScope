@@ -68,8 +68,12 @@ function render() {
   chart.setOption(buildOption(), true)
 }
 
+// CULTScope 3.5.7B: resize 时清除旧 Tooltip，避免移动端残留越界
 function resize() {
-  chart?.resize()
+  if (!chart) return
+
+  chart.dispatchAction({ type: 'hideTip' })
+  chart.resize()
 }
 
 onMounted(() => {
